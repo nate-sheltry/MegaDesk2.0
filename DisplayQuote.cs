@@ -15,7 +15,7 @@ namespace MegaDesk
 {
     public partial class DisplayQuote : Form
     {
-        private const String FILE_NAME = "quotes.json"; 
+        private const String FILE_NAME = "C:\\CSE_235\\MegaDesk_2.0\\quotes.json\\quote.json"; 
         private DeskQuote deskQuote = null;
         public DisplayQuote()
         {
