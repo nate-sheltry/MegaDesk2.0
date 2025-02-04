@@ -7,6 +7,7 @@ using System.Text;
 using MegaDesk;
 using System.IO;
 using System.Collections;
+using System.Reflection;
 
 namespace MegaDesk
 {
@@ -54,16 +55,17 @@ namespace MegaDesk
             this.price = calculatePrice(width, depth, drawers, material, order);
         }
 
-        private Hashtable getRushOrderPrices()
+        private Dictionary<int, int[]> getRushOrderPrices()
         {
-            Hashtable ret = new Hashtable();
+            Dictionary<int, int[]> ret = new Dictionary<int, int[]>();
             String[] lines =File.ReadAllLines( RUSH_ORDER_FILE );
             var three = new int[] { Int32.Parse(lines[0]), Int32.Parse(lines[1]), Int32.Parse(lines[2]) };
             var five = new int[] { Int32.Parse(lines[3]), Int32.Parse(lines[4]), Int32.Parse(lines[5]) };
             var seven =  new int[] { Int32.Parse(lines[6]), Int32.Parse(lines[7]), Int32.Parse(lines[8]) };
-            ret.Add(3, three);
-            ret.Add(5, five);
-            ret.Add(7, seven);
+            ret[14] =  new int[] { 0, 0, 0 };
+            ret[3] = three;
+            ret[5] = five;
+            ret[7] = seven;
             return ret;
         }
         private float calculatePrice(
@@ -75,21 +77,21 @@ namespace MegaDesk
             price += 50 * drawers;
 
             int surfaceArea = width * depth;
-            var rushOrderPrices = getRushOrderPrices();
+            Dictionary<int, int[]> rushOrderPrices = getRushOrderPrices();
 
             if (surfaceArea >= 1000 && surfaceArea <= 2000)
             {
                 price += surfaceArea - 1000;
-                price += ((int[])rushOrderPrices[order])[1];
+                price += rushOrderPrices[order][1];
             }
             else if (surfaceArea > 2000)
             {
                 price += surfaceArea - 1000;
-                price += ((int[])rushOrderPrices[order])[2];
+                price += rushOrderPrices[order][2];
             }
             else
             {
-                price += ((int[])rushOrderPrices[order])[0];
+                price += rushOrderPrices[order][0];
             }
             switch (material)
             {
