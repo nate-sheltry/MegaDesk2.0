@@ -10,12 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 namespace MegaDesk
 {
     public partial class DisplayQuote : Form
     {
-        private const String FILE_NAME = "C:\\CSE_235\\MegaDesk_2.0\\quotes.json\\quote.json"; 
+        private String WORK_DIR = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        private const String FILE_NAME = "quote.json"; 
         private DeskQuote deskQuote = null;
         public DisplayQuote()
         {
@@ -47,9 +49,9 @@ namespace MegaDesk
         {
             //load from file
             List<DeskQuote> quotes = new List<DeskQuote>();
-            if (File.Exists(FILE_NAME))
+            if (File.Exists(WORK_DIR + "\\"  + FILE_NAME))
             {
-                using (StreamReader r = new StreamReader(FILE_NAME))
+                using (StreamReader r = new StreamReader(WORK_DIR + "\\" + FILE_NAME))
                 {
                     string json = r.ReadToEnd();
                     quotes = JsonConvert.DeserializeObject<List<DeskQuote>>(json);
@@ -58,7 +60,7 @@ namespace MegaDesk
             quotes.Add(deskQuote);
 
             var jsonToOutput = JsonConvert.SerializeObject(quotes, Formatting.Indented);
-            System.IO.File.WriteAllText(FILE_NAME, jsonToOutput);
+            System.IO.File.WriteAllText(WORK_DIR + "\\" + FILE_NAME, jsonToOutput);
             BtnSave.Enabled = false;
         }
     }
