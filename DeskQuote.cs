@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Text;
 using MegaDesk;
 using System.IO;
+using System.Collections;
 
 namespace MegaDesk
 {
     internal class DeskQuote
     {
         private static string file = "Desks.txt";
+        private const String RUSH_ORDER_FILE = "rushOrderPrices.txt";
 
         public int width;
         public int depth;
@@ -52,6 +54,18 @@ namespace MegaDesk
             this.price = calculatePrice(width, depth, drawers, material, order);
         }
 
+        private Hashtable getRushOrderPrices()
+        {
+            Hashtable ret = new Hashtable();
+            String[] lines =File.ReadAllLines( RUSH_ORDER_FILE );
+            var three = new int[] { Int32.Parse(lines[0]), Int32.Parse(lines[1]), Int32.Parse(lines[2]) };
+            var five = new int[] { Int32.Parse(lines[3]), Int32.Parse(lines[4]), Int32.Parse(lines[5]) };
+            var seven =  new int[] { Int32.Parse(lines[6]), Int32.Parse(lines[7]), Int32.Parse(lines[8]) };
+            ret.Add(3, three);
+            ret.Add(5, five);
+            ret.Add(7, seven);
+            return ret;
+        }
         private float calculatePrice(
             int width, int depth, int drawers,
             DesktopMaterial material,int order
@@ -61,44 +75,21 @@ namespace MegaDesk
             price += 50 * drawers;
 
             int surfaceArea = width * depth;
+            var rushOrderPrices = getRushOrderPrices();
 
             if (surfaceArea >= 1000 && surfaceArea <= 2000)
             {
                 price += surfaceArea - 1000;
-                switch (order)
-                {
-                    case 3:
-                        price += 70; break;
-                    case 5:
-                        price += 50; break;
-                    case 7:
-                        price += 35; break;
-                }
+                price += ((int[])rushOrderPrices[order])[1];
             }
             else if (surfaceArea > 2000)
             {
                 price += surfaceArea - 1000;
-                switch (order)
-                {
-                    case 3:
-                        price += 80; break;
-                    case 5:
-                        price += 60; break;
-                    case 7:
-                        price += 40; break;
-                }
+                price += ((int[])rushOrderPrices[order])[2];
             }
             else
             {
-                switch (order)
-                {
-                    case 3:
-                        price += 60; break;
-                    case 5:
-                        price += 40; break;
-                    case 7:
-                        price += 30; break;
-                }
+                price += ((int[])rushOrderPrices[order])[0];
             }
             switch (material)
             {

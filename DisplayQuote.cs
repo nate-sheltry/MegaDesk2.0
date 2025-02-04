@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MegaDesk
 {
     public partial class DisplayQuote : Form
     {
+        private const String FILE_NAME = "C:\\CSE_235\\MegaDesk_2.0\\quotes.json\\quote.json"; 
+        private DeskQuote deskQuote = null;
         public DisplayQuote()
         {
             InitializeComponent();
@@ -26,6 +31,7 @@ namespace MegaDesk
 
         internal void LoadQuote(DeskQuote quote)
         {
+            this.deskQuote = quote;
             nameView.Text = quote.customerName;
             dateView.Text = quote.date.ToString("MM/dd/yyyy");
             widthView.Text = quote.width.ToString()+" in.";
@@ -35,6 +41,25 @@ namespace MegaDesk
             orderView.Text = quote.order.ToString() + " days";
             priceView.Text = "$"+quote.price.ToString();
 
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //load from file
+            List<DeskQuote> quotes = new List<DeskQuote>();
+            if (File.Exists(FILE_NAME))
+            {
+                using (StreamReader r = new StreamReader(FILE_NAME))
+                {
+                    string json = r.ReadToEnd();
+                    quotes = JsonConvert.DeserializeObject<List<DeskQuote>>(json);
+                }
+            }
+            quotes.Add(deskQuote);
+
+            var jsonToOutput = JsonConvert.SerializeObject(quotes, Formatting.Indented);
+            System.IO.File.WriteAllText(FILE_NAME, jsonToOutput);
+            BtnSave.Enabled = false;
         }
     }
 }
