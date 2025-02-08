@@ -13,9 +13,6 @@ namespace MegaDesk
 {
     internal class DeskQuote
     {
-        private static string file = "Desks.txt";
-        private const String RUSH_ORDER_FILE = "rushOrderPrices.txt";
-
         public int width;
         public int depth;
         public int drawers;
@@ -58,7 +55,7 @@ namespace MegaDesk
         private Dictionary<int, int[]> getRushOrderPrices()
         {
             Dictionary<int, int[]> ret = new Dictionary<int, int[]>();
-            String[] lines =File.ReadAllLines( RUSH_ORDER_FILE );
+            String[] lines =File.ReadAllLines(Constants.RUSH_ORDER_PRICES_FILE);
             var three = new int[] { Int32.Parse(lines[0]), Int32.Parse(lines[1]), Int32.Parse(lines[2]) };
             var five = new int[] { Int32.Parse(lines[3]), Int32.Parse(lines[4]), Int32.Parse(lines[5]) };
             var seven =  new int[] { Int32.Parse(lines[6]), Int32.Parse(lines[7]), Int32.Parse(lines[8]) };

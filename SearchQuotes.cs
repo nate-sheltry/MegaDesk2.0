@@ -10,18 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Windows.Forms;
-
 namespace MegaDesk
 {
     public partial class SearchQuotes : Form
     {
-        private const string FILE_NAME = "quote.json";
         private List<DeskQuote> allQuotes = new List<DeskQuote>();
 
         public SearchQuotes()
@@ -40,11 +32,11 @@ namespace MegaDesk
 
         private void LoadQuotes()
         {
-            if (File.Exists(FILE_NAME))
+            if (File.Exists(Constants.QUOTES_FILE))
             {
                 try
                 {
-                    string json = File.ReadAllText(FILE_NAME);
+                    string json = File.ReadAllText(Constants.QUOTES_FILE);
                     allQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(json);
                 }
                 catch (Exception ex)
