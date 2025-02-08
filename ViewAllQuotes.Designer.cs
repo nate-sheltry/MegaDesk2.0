@@ -59,7 +59,7 @@
             this.Controls.Add(this.gridAllQuotes);
             this.Controls.Add(this.backToMenuBtn);
             this.Name = "ViewAllQuotes";
-            this.Text = "MegaDesk - Nathaniel Dunham";
+            this.Text = "MegaDesk 2.0";
             ((System.ComponentModel.ISupportInitialize)(this.gridAllQuotes)).EndInit();
             this.ResumeLayout(false);
 

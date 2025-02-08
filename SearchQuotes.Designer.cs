@@ -37,9 +37,9 @@
             // backToMenuBtn
             // 
             this.backToMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backToMenuBtn.Location = new System.Drawing.Point(12, 238);
+            this.backToMenuBtn.Location = new System.Drawing.Point(12, 258);
             this.backToMenuBtn.Name = "backToMenuBtn";
-            this.backToMenuBtn.Size = new System.Drawing.Size(128, 34);
+            this.backToMenuBtn.Size = new System.Drawing.Size(128, 37);
             this.backToMenuBtn.TabIndex = 2;
             this.backToMenuBtn.Text = "&Back To Menu";
             this.backToMenuBtn.UseVisualStyleBackColor = true;
@@ -48,29 +48,29 @@
             // comboMaterial
             // 
             this.comboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboMaterial.Location = new System.Drawing.Point(12, 12);
+            this.comboMaterial.Location = new System.Drawing.Point(12, 13);
             this.comboMaterial.Name = "comboMaterial";
-            this.comboMaterial.Size = new System.Drawing.Size(121, 20);
+            this.comboMaterial.Size = new System.Drawing.Size(121, 21);
             this.comboMaterial.TabIndex = 1;
             this.comboMaterial.SelectedIndexChanged += new System.EventHandler(this.comboMaterial_SelectedIndexChanged);
             // 
             // gridQuotes
             // 
-            this.gridQuotes.Location = new System.Drawing.Point(12, 52);
+            this.gridQuotes.Location = new System.Drawing.Point(12, 56);
             this.gridQuotes.Name = "gridQuotes";
-            this.gridQuotes.Size = new System.Drawing.Size(372, 180);
+            this.gridQuotes.Size = new System.Drawing.Size(372, 195);
             this.gridQuotes.TabIndex = 0;
             // 
             // SearchQuotes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 283);
+            this.ClientSize = new System.Drawing.Size(396, 307);
             this.Controls.Add(this.gridQuotes);
             this.Controls.Add(this.comboMaterial);
             this.Controls.Add(this.backToMenuBtn);
             this.Name = "SearchQuotes";
-            this.Text = "MegaDesk - Nathaniel Dunham";
+            this.Text = "MegaDesk 2.0";
             ((System.ComponentModel.ISupportInitialize)(this.gridQuotes)).EndInit();
             this.ResumeLayout(false);
 

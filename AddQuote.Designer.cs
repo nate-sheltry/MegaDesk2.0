@@ -231,7 +231,7 @@
             this.Controls.Add(this.nameInput);
             this.Controls.Add(this.backToMenuBtn);
             this.Name = "AddQuote";
-            this.Text = "MegaDesk - Nathaniel Dunham";
+            this.Text = "MegaDesk 2.0";
             this.ResumeLayout(false);
             this.PerformLayout();
 

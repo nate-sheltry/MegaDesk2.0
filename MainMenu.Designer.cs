@@ -88,7 +88,7 @@
             this.Controls.Add(this.viewQuotesBtn);
             this.Controls.Add(this.addNewQuoteBtn);
             this.Name = "MainMenu";
-            this.Text = "MegaDesk - Nathaniel Dunham";
+            this.Text = "MegaDesk 2.0";
             this.ResumeLayout(false);
 
         }
