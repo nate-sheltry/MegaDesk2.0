@@ -25,6 +25,10 @@ namespace MegaDesk
             {"5 Days",5},
             {"3 Days",3}
         };
+
+        public const string QUOTES_FILE = "quotes.json";
+
+        public const string RUSH_ORDER_PRICES_FILE = "rushOrderPrices.txt";
     }
     internal class Desk
     {

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.backToMenuBtn = new System.Windows.Forms.Button();
+            this.gridAllQuotes = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAllQuotes)).BeginInit();
             this.SuspendLayout();
             // 
             // backToMenuBtn
@@ -42,14 +44,23 @@
             this.backToMenuBtn.UseVisualStyleBackColor = true;
             this.backToMenuBtn.Click += new System.EventHandler(this.backToMenuBtn_Click);
             // 
+            // gridAllQuotes
+            // 
+            this.gridAllQuotes.Location = new System.Drawing.Point(12, 12);
+            this.gridAllQuotes.Name = "gridAllQuotes";
+            this.gridAllQuotes.Size = new System.Drawing.Size(372, 240);
+            this.gridAllQuotes.TabIndex = 3;
+            // 
             // ViewAllQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 307);
+            this.Controls.Add(this.gridAllQuotes);
             this.Controls.Add(this.backToMenuBtn);
             this.Name = "ViewAllQuotes";
             this.Text = "MegaDesk - Nathaniel Dunham";
+            ((System.ComponentModel.ISupportInitialize)(this.gridAllQuotes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -57,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Button backToMenuBtn;
+        private System.Windows.Forms.DataGridView gridAllQuotes;
     }
 }
