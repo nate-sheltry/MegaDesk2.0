@@ -21,7 +21,7 @@ namespace MegaDesk
 {
     public partial class SearchQuotes : Form
     {
-        private const string FILE_NAME = "quote.json"; // File where quotes are stored or txt file， I don't see where the quote is saved right now
+        private const string FILE_NAME = "quote.json";
         private List<DeskQuote> allQuotes = new List<DeskQuote>();
 
         public SearchQuotes()
